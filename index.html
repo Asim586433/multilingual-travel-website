@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Global Travels - Discover Amazing Destinations</title>
+    
+    <!-- Critical CSS (inlined for performance) -->
+    <style>
+        /* Critical CSS - above the fold */
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;background:#fff}
+        .header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 2px 20px rgba(0,0,0,.1)}
+        .nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 5%;max-width:1400px;margin:0 auto}
+        .logo{font-size:1.8rem;font-weight:700;color:#0066cc;text-decoration:none}
+        .nav-menu{display:flex;gap:2rem;align-items:center}
+        .nav-link{color:#333;text-decoration:none;font-weight:500;transition:color .3s}
+        .nav-link:hover{color:#0066cc}
+        .hero{height:90vh;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5)),url('assets/images/hero-poster.webp');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;margin-top:70px}
+        .hero-content{max-width:800px;padding:2rem}
+        .hero-title{font-size:clamp(2rem,5vw,4rem);margin-bottom:1rem;animation:fadeInUp 1s ease}
+        .hero-subtitle{font-size:clamp(1rem,2vw,1.5rem);margin-bottom:2rem;opacity:.9}
+        .btn{display:inline-block;padding:1rem 2rem;background:#0066cc;color:#fff;text-decoration:none;border-radius:50px;font-weight:600;transition:transform .3s,background .3s}
+        .btn:hover{background:#0052a3;transform:translateY(-2px)}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    </style>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="assets/images/hero-poster.webp" as="image">
+    
+    <!-- Full stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Hreflang tags for 10 languages -->
+    <link rel="alternate" hreflang="en" href="https://travelsite.com/en">
+    <link rel="alternate" hreflang="es" href="https://travelsite.com/es">
+    <link rel="alternate" hreflang="fr" href="https://travelsite.com/fr">
+    <link rel="alternate" hreflang="de" href="https://travelsite.com/de">
+    <link rel="alternate" hreflang="it" href="https://travelsite.com/it">
+    <link rel="alternate" hreflang="pt" href="https://travelsite.com/pt">
+    <link rel="alternate" hreflang="ru" href="https://travelsite.com/ru">
+    <link rel="alternate" hreflang="zh" href="https://travelsite.com/zh">
+    <link rel="alternate" hreflang="ja" href="https://travelsite.com/ja">
+    <link rel="alternate" hreflang="ar" href="https://travelsite.com/ar">
+    <link rel="alternate" hreflang="x-default" href="https://travelsite.com/en">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Global Travels",
+        "url": "https://travelsite.com",
+        "logo": "https://travelsite.com/assets/images/logo.webp",
+        "sameAs": [
+            "https://facebook.com/globaltravels",
+            "https://instagram.com/globaltravels",
+            "https://twitter.com/globaltravels"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header with language switcher -->
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo" aria-label="Global Travels Home">🌍 GlobalTravels</a>
+            
+            <div class="nav-menu">
+                <a href="/tours" class="nav-link" data-i18n="nav.tours">Tours</a>
+                <a href="/destinations" class="nav-link" data-i18n="nav.destinations">Destinations</a>
+                <a href="/about" class="nav-link" data-i18n="nav.about">About</a>
+                <a href="/contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                
+                <!-- Language Switcher Dropdown -->
+                <div class="language-selector">
+                    <button class="lang-btn" aria-label="Select language">
+                        <span class="current-lang">EN</span>
+                        <svg width="12" height="12" viewBox="0 0 12 12">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" fill="none"/>
+                        </svg>
+                    </button>
+                    <ul class="lang-dropdown">
+                        <li><a href="#" data-lang="en" class="active">🇬🇧 English</a></li>
+                        <li><a href="#" data-lang="es">🇪🇸 Español</a></li>
+                        <li><a href="#" data-lang="fr">🇫🇷 Français</a></li>
+                        <li><a href="#" data-lang="de">🇩🇪 Deutsch</a></li>
+                        <li><a href="#" data-lang="it">🇮🇹 Italiano</a></li>
+                        <li><a href="#" data-lang="pt">🇵🇹 Português</a></li>
+                        <li><a href="#" data-lang="ru">🇷🇺 Русский</a></li>
+                        <li><a href="#" data-lang="zh">🇨🇳 中文</a></li>
+                        <li><a href="#" data-lang="ja">🇯🇵 日本語</a></li>
+                        <li><a href="#" data-lang="ar">🇸🇦 العربية</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Currency Switcher -->
+                <div class="currency-selector">
+                    <button class="currency-btn">USD $</button>
+                    <ul class="currency-dropdown">
+                        <li><a href="#" data-currency="USD" class="active">USD $</a></li>
+                        <li><a href="#" data-currency="EUR">EUR €</a></li>
+                        <li><a href="#" data-currency="GBP">GBP £</a></li>
+                        <li><a href="#" data-currency="JPY">JPY ¥</a></li>
+                        <li><a href="#" data-currency="AUD">AUD $</a></li>
+                        <li><a href="#" data-currency="CAD">CAD $</a></li>
+                        <li><a href="#" data-currency="CHF">CHF Fr</a></li>
+                        <li><a href="#" data-currency="CNY">CNY ¥</a></li>
+                        <li><a href="#" data-currency="RUB">RUB ₽</a></li>
+                        <li><a href="#" data-currency="BRL">BRL R$</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Cart Icon -->
+                <a href="/cart" class="cart-icon" aria-label="Shopping Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="9" cy="21" r="2" fill="currentColor"/>
+                        <circle cx="20" cy="21" r="2" fill="currentColor"/>
+                        <path d="M1 1h4l2.5 13h13L23 6H6" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section with Video Header (Optimized) -->
+        <section class="hero-video-section">
+            <div class="hero-video-container" style="--aspect-ratio: 16/9;">
+                <!-- Poster image (LCP element) -->
+                <div class="hero-poster">
+                    <picture>
+                        <source srcset="assets/images/hero-poster.webp" type="image/webp">
+                        <source srcset="assets/images/hero-poster.jpg" type="image/jpeg">
+                        <img src="assets/images/hero-poster.jpg" 
+                             alt="Beautiful travel destination" 
+                             width="1920" 
+                             height="1080"
+                             fetchpriority="high"
+                             class="hero-poster-img">
+                    </picture>
+                </div>
+                
+                <!-- Video player (lazy loaded) -->
+                <div class="hero-video-player" data-video-enabled="false">
+                    <video class="hero-video" playsinline muted loop preload="none" poster="assets/images/hero-poster.jpg">
+                        <source data-src="assets/videos/hero-compressed.mp4" type="video/mp4">
+                        <source data-src="assets/videos/hero-compressed.webm" type="video/webm">
+                    </video>
+                </div>
+                
+                <!-- Hero Content -->
+                <div class="hero-content-overlay">
+                    <h1 class="hero-main-title" data-i18n="hero.title">Discover Your Next Adventure</h1>
+                    <p class="hero-main-subtitle" data-i18n="hero.subtitle">Explore breathtaking destinations with expert local guides</p>
+                    <div class="hero-cta">
+                        <a href="/tours" class="btn btn-primary" data-i18n="hero.cta">Explore Tours</a>
+                        <a href="/destinations" class="btn btn-secondary" data-i18n="hero.cta2">View Destinations</a>
+                    </div>
+                </div>
+                
+                <!-- Play/Pause button for video -->
+                <button class="video-control" aria-label="Play video">
+                    <svg class="play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" fill="currentColor"/>
+                    </svg>
+                    <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Featured Tours Section -->
+        <section class="featured-tours section-padding">
+            <div class="container">
+                <h2 class="section-title" data-i18n="tours.featured">Featured Tours</h2>
+                <p class="section-subtitle" data-i18n="tours.subtitle">Hand-picked experiences for your next journey</p>
+                
+                <div class="tours-grid" id="featured-tours">
+                    <!-- Tours loaded dynamically from JS -->
+                </div>
+                
+                <div class="text-center">
+                    <a href="/tours" class="btn btn-outline" data-i18n="tours.view_all">View All Tours</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="features section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title" data-i18n="features.title">Why Choose Us</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3 data-i18n="features.local_guides">Local Expert Guides</h3>
+                        <p data-i18n="features.local_guides_desc">Knowledgeable locals who know every hidden gem</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3 data-i18n="features.best_price">Best Price Guarantee</h3>
+                        <p data-i18n="features.best_price_desc">We match any legitimate price</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3 data-i18n="features.safe_travel">Safe Travels</h3>
+                        <p data-i18n="features.safe_travel_desc">24/7 support and travel insurance included</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📸</div>
+                        <h3 data-i18n="features.unique_experiences">Unique Experiences</h3>
+                        <p data-i18n="features.unique_experiences_desc">Off-the-beaten-path adventures</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Destinations -->
+        <section class="destinations section-padding">
+            <div class="container">
+                <h2 class="section-title" data-i18n="destinations.title">Popular Destinations</h2>
+                
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <img src="assets/images/destinations/paris.webp" alt="Paris" loading="lazy" width="400" height="300">
+                        <div class="destination-info">
+                            <h3>Paris</h3>
+                            <p data-i18n="destinations.from">from</p>
+                            <span class="price" data-price="1299">$1,299</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="assets/images/destinations/bali.webp" alt="Bali" loading="lazy" width="400" height="300">
+                        <div class="destination-info">
+                            <h3>Bali</h3>
+                            <p data-i18n="destinations.from">from</p>
+                            <span class="price" data-price="899">$899</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="assets/images/destinations/rome.webp" alt="Rome" loading="lazy" width="400" height="300">
+                        <div class="destination-info">
+                            <h3>Rome</h3>
+                            <p data-i18n="destinations.from">from</p>
+                            <span class="price" data-price="999">$999</span>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-card">
+                        <img src="assets/images/destinations/tokyo.webp" alt="Tokyo" loading="lazy" width="400" height="300">
+                        <div class="destination-info">
+                            <h3>Tokyo</h3>
+                            <p data-i18n="destinations.from">from</p>
+                            <span class="price" data-price="1499">$1,499</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title" data-i18n="testimonials.title">What Our Travelers Say</h2>
+                
+                <div class="testimonials-slider">
+                    <div class="testimonial-card active">
+                        <div class="testimonial-content">
+                            <p data-i18n="testimonials.1.text">"Amazing experience! The local guide made all the difference. Saw places I never would have found on my own."</p>
+                            <div class="testimonial-author">
+                                <strong>- Sarah J.</strong>
+                                <span data-i18n="testimonials.1.location">United Kingdom</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p data-i18n="testimonials.2.text">"Perfect organization, great value for money. Already planning my next trip with them."</p>
+                            <div class="testimonial-author">
+                                <strong>- Miguel R.</strong>
+                                <span data-i18n="testimonials.2.location">Spain</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p data-i18n="testimonials.3.text">"The attention to detail was incredible. Every aspect of the trip was well thought out."</p>
+                            <div class="testimonial-author">
+                                <strong>- Yuki T.</strong>
+                                <span data-i18n="testimonials.3.location">Japan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-prev" aria-label="Previous">←</button>
+                    <button class="slider-next" aria-label="Next">→</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="newsletter section-padding">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2 data-i18n="newsletter.title">Get Travel Inspiration</h2>
+                    <p data-i18n="newsletter.subtitle">Subscribe to receive exclusive offers and travel tips</p>
+                    
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Your email address" required aria-label="Email">
+                        <button type="submit" class="btn btn-primary" data-i18n="newsletter.subscribe">Subscribe</button>
+                    </form>
+                    
+                    <small data-i18n="newsletter.privacy">We respect your privacy. Unsubscribe anytime.</small>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 data-i18n="footer.company">Company</h4>
+                    <ul>
+                        <li><a href="/about" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="/team" data-i18n="footer.team">Our Team</a></li>
+                        <li><a href="/careers" data-i18n="footer.careers">Careers</a></li>
+                        <li><a href="/press" data-i18n="footer.press">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.support">Support</h4>
+                    <ul>
+                        <li><a href="/contact" data-i18n="footer.contact">Contact Us</a></li>
+                        <li><a href="/faq" data-i18n="footer.faq">FAQ</a></li>
+                        <li><a href="/privacy" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/terms" data-i18n="footer.terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.connect">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="YouTube">▶️</a>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <span>💳 Visa</span>
+                        <span>💳 Mastercard</span>
+                        <span>💳 Amex</span>
+                        <span>💳 PayPal</span>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.app">Download Our App</h4>
+                    <div class="app-badges">
+                        <a href="#" class="app-badge">App Store</a>
+                        <a href="#" class="app-badge">Google Play</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Global Travels. <span data-i18n="footer.rights">All rights reserved.</span></p>
+                
+                <div class="footer-lang">
+                    <!-- Language selector for footer -->
+                    <select class="footer-lang-select" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                        <option value="pt">Português</option>
+                        <option value="ru">Русский</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Full JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/multilingual.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/video-header.js" defer></script>
+    
+    <!-- Performance monitoring (optional) -->
+    <script>
+    // Core Web Vitals monitoring
+    if ('performance' in window && 'navigation' in performance) {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const perfData = window.performance.timing;
+                const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                console.log('Page load time:', pageLoadTime, 'ms');
+                
+                // Report to analytics if needed
+                if (pageLoadTime > 2500) {
+                    console.warn('Page load time exceeds 2.5s');
+                }
+            }, 0);
+        });
+    }
+    </script>
+</body>
+</html>
