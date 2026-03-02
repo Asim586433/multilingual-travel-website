@@ -1,0 +1,24 @@
+travel-website/
+├── index.html
+├── css/
+│   ├── style.css
+│   ├── critical.css
+│   └── admin.css
+├── js/
+│   ├── main.js
+│   ├── cart.js
+│   ├── multilingual.js
+│   ├── video-header.js
+│   └── admin.js
+├── pages/
+│   ├── tours.html
+│   ├── cart.html
+│   ├── checkout.html
+│   └── admin/
+│       ├── dashboard.html
+│       ├── pages.html
+│       └── tours-manager.html
+└── assets/
+    ├── images/
+    ├── videos/
+    └── icons/
