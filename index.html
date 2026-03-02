@@ -2,92 +2,61 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Travels - Discover Amazing Destinations</title>
+    <meta name="description" content="Explore breathtaking destinations with expert local guides. Book your next adventure today.">
     
-    <!-- Critical CSS (inlined for performance) -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/icons/favicon.ico">
+    
+    <!-- Critical CSS -->
     <style>
         /* Critical CSS - above the fold */
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;background:#fff}
-        .header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 2px 20px rgba(0,0,0,.1)}
+        *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+        body{line-height:1.6;color:#333;background:#fff;overflow-x:hidden}
+        .header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);z-index:1000;box-shadow:0 2px 20px rgba(0,0,0,.1)}
         .nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 5%;max-width:1400px;margin:0 auto}
         .logo{font-size:1.8rem;font-weight:700;color:#0066cc;text-decoration:none}
         .nav-menu{display:flex;gap:2rem;align-items:center}
-        .nav-link{color:#333;text-decoration:none;font-weight:500;transition:color .3s}
-        .nav-link:hover{color:#0066cc}
-        .hero{height:90vh;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.5)),url('assets/images/hero-poster.webp');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;margin-top:70px}
-        .hero-content{max-width:800px;padding:2rem}
-        .hero-title{font-size:clamp(2rem,5vw,4rem);margin-bottom:1rem;animation:fadeInUp 1s ease}
-        .hero-subtitle{font-size:clamp(1rem,2vw,1.5rem);margin-bottom:2rem;opacity:.9}
-        .btn{display:inline-block;padding:1rem 2rem;background:#0066cc;color:#fff;text-decoration:none;border-radius:50px;font-weight:600;transition:transform .3s,background .3s}
-        .btn:hover{background:#0052a3;transform:translateY(-2px)}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .nav-link{color:#333;text-decoration:none;font-weight:500}
+        .hero-section{margin-top:70px;position:relative;height:90vh;overflow:hidden}
+        .hero-poster{position:absolute;top:0;left:0;width:100%;height:100%}
+        .hero-poster img{width:100%;height:100%;object-fit:cover}
+        .hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#fff;z-index:10;width:90%;max-width:800px;background:rgba(0,0,0,.3);padding:2rem;border-radius:12px;backdrop-filter:blur(5px)}
+        .hero-title{font-size:clamp(2rem,5vw,4rem);margin-bottom:1rem}
+        .hero-subtitle{font-size:clamp(1rem,2vw,1.5rem);margin-bottom:2rem}
+        .btn{display:inline-block;padding:1rem 2rem;border-radius:50px;font-weight:600;text-decoration:none;transition:.3s;border:none;cursor:pointer}
+        .btn-primary{background:#0066cc;color:#fff}
+        .btn-primary:hover{background:#0052a3;transform:translateY(-2px)}
+        .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
+        .btn-secondary:hover{background:#fff;color:#0066cc}
     </style>
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
-    <link rel="preload" href="assets/images/hero-poster.webp" as="image">
-    
-    <!-- Full stylesheet -->
+    <!-- Full Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Hreflang tags for 10 languages -->
-    <link rel="alternate" hreflang="en" href="https://travelsite.com/en">
-    <link rel="alternate" hreflang="es" href="https://travelsite.com/es">
-    <link rel="alternate" hreflang="fr" href="https://travelsite.com/fr">
-    <link rel="alternate" hreflang="de" href="https://travelsite.com/de">
-    <link rel="alternate" hreflang="it" href="https://travelsite.com/it">
-    <link rel="alternate" hreflang="pt" href="https://travelsite.com/pt">
-    <link rel="alternate" hreflang="ru" href="https://travelsite.com/ru">
-    <link rel="alternate" hreflang="zh" href="https://travelsite.com/zh">
-    <link rel="alternate" hreflang="ja" href="https://travelsite.com/ja">
-    <link rel="alternate" hreflang="ar" href="https://travelsite.com/ar">
-    <link rel="alternate" hreflang="x-default" href="https://travelsite.com/en">
-    
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "TravelAgency",
-        "name": "Global Travels",
-        "url": "https://travelsite.com",
-        "logo": "https://travelsite.com/assets/images/logo.webp",
-        "sameAs": [
-            "https://facebook.com/globaltravels",
-            "https://instagram.com/globaltravels",
-            "https://twitter.com/globaltravels"
-        ],
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US"
-        }
-    }
-    </script>
 </head>
 <body>
-    <!-- Header with language switcher -->
-    <header class="header">
+    <!-- Header with working navigation -->
+    <header class="header" id="mainHeader">
         <nav class="nav">
-            <a href="/" class="logo" aria-label="Global Travels Home">🌍 GlobalTravels</a>
+            <a href="/" class="logo" id="logo">🌍 GlobalTravels</a>
             
-            <div class="nav-menu">
-                <a href="/tours" class="nav-link" data-i18n="nav.tours">Tours</a>
-                <a href="/destinations" class="nav-link" data-i18n="nav.destinations">Destinations</a>
-                <a href="/about" class="nav-link" data-i18n="nav.about">About</a>
-                <a href="/contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+            <div class="nav-menu" id="navMenu">
+                <a href="/tours.html" class="nav-link" data-i18n="nav.tours" id="navTours">Tours</a>
+                <a href="/#destinations" class="nav-link" data-i18n="nav.destinations" id="navDestinations">Destinations</a>
+                <a href="/#about" class="nav-link" data-i18n="nav.about" id="navAbout">About</a>
+                <a href="/#contact" class="nav-link" data-i18n="nav.contact" id="navContact">Contact</a>
                 
-                <!-- Language Switcher Dropdown -->
-                <div class="language-selector">
-                    <button class="lang-btn" aria-label="Select language">
-                        <span class="current-lang">EN</span>
+                <!-- Language Selector (Working) -->
+                <div class="language-selector" id="languageSelector">
+                    <button class="lang-btn" id="langBtn">
+                        <span class="current-lang" id="currentLang">EN</span>
                         <svg width="12" height="12" viewBox="0 0 12 12">
                             <path d="M2 4L6 8L10 4" stroke="currentColor" fill="none"/>
                         </svg>
                     </button>
-                    <ul class="lang-dropdown">
-                        <li><a href="#" data-lang="en" class="active">🇬🇧 English</a></li>
+                    <ul class="lang-dropdown" id="langDropdown">
+                        <li><a href="#" data-lang="en" class="active-lang">🇬🇧 English</a></li>
                         <li><a href="#" data-lang="es">🇪🇸 Español</a></li>
                         <li><a href="#" data-lang="fr">🇫🇷 Français</a></li>
                         <li><a href="#" data-lang="de">🇩🇪 Deutsch</a></li>
@@ -100,107 +69,104 @@
                     </ul>
                 </div>
                 
-                <!-- Currency Switcher -->
-                <div class="currency-selector">
-                    <button class="currency-btn">USD $</button>
-                    <ul class="currency-dropdown">
-                        <li><a href="#" data-currency="USD" class="active">USD $</a></li>
+                <!-- Currency Selector (Working) -->
+                <div class="currency-selector" id="currencySelector">
+                    <button class="currency-btn" id="currencyBtn">USD $</button>
+                    <ul class="currency-dropdown" id="currencyDropdown">
+                        <li><a href="#" data-currency="USD" class="active-currency">USD $</a></li>
                         <li><a href="#" data-currency="EUR">EUR €</a></li>
                         <li><a href="#" data-currency="GBP">GBP £</a></li>
                         <li><a href="#" data-currency="JPY">JPY ¥</a></li>
                         <li><a href="#" data-currency="AUD">AUD $</a></li>
-                        <li><a href="#" data-currency="CAD">CAD $</a></li>
-                        <li><a href="#" data-currency="CHF">CHF Fr</a></li>
-                        <li><a href="#" data-currency="CNY">CNY ¥</a></li>
-                        <li><a href="#" data-currency="RUB">RUB ₽</a></li>
-                        <li><a href="#" data-currency="BRL">BRL R$</a></li>
                     </ul>
                 </div>
                 
-                <!-- Cart Icon -->
-                <a href="/cart" class="cart-icon" aria-label="Shopping Cart">
+                <!-- Cart Icon with Live Count -->
+                <a href="/cart.html" class="cart-icon" id="cartIcon">
                     <svg width="24" height="24" viewBox="0 0 24 24">
                         <circle cx="9" cy="21" r="2" fill="currentColor"/>
                         <circle cx="20" cy="21" r="2" fill="currentColor"/>
                         <path d="M1 1h4l2.5 13h13L23 6H6" stroke="currentColor" fill="none" stroke-width="2"/>
                     </svg>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count" id="cartCount">0</span>
                 </a>
             </div>
             
-            <!-- Mobile menu button -->
-            <button class="mobile-menu-btn" aria-label="Menu">
-                <span></span><span></span><span></span>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </nav>
     </header>
 
     <main>
-        <!-- Hero Section with Video Header (Optimized) -->
-        <section class="hero-video-section">
-            <div class="hero-video-container" style="--aspect-ratio: 16/9;">
-                <!-- Poster image (LCP element) -->
+        <!-- Hero Section with Video (Working) -->
+        <section class="hero-section" id="hero">
+            <div class="hero-video-container">
+                <!-- Poster Image (LCP) -->
                 <div class="hero-poster">
                     <picture>
-                        <source srcset="assets/images/hero-poster.webp" type="image/webp">
-                        <source srcset="assets/images/hero-poster.jpg" type="image/jpeg">
-                        <img src="assets/images/hero-poster.jpg" 
+                        <source srcset="assets/images/hero/hero-poster.webp" type="image/webp">
+                        <source srcset="assets/images/hero/hero-poster.jpg" type="image/jpeg">
+                        <img src="assets/images/hero/hero-poster.jpg" 
                              alt="Beautiful travel destination" 
                              width="1920" 
                              height="1080"
                              fetchpriority="high"
-                             class="hero-poster-img">
+                             onerror="this.src='assets/images/hero/hero-fallback.jpg'">
                     </picture>
                 </div>
                 
-                <!-- Video player (lazy loaded) -->
-                <div class="hero-video-player" data-video-enabled="false">
-                    <video class="hero-video" playsinline muted loop preload="none" poster="assets/images/hero-poster.jpg">
+                <!-- Video Player (Lazy Loaded) -->
+                <div class="hero-video-player" id="heroVideo" data-video-enabled="false">
+                    <video class="hero-video" playsinline muted loop preload="none" poster="assets/images/hero/hero-poster.jpg">
                         <source data-src="assets/videos/hero-compressed.mp4" type="video/mp4">
                         <source data-src="assets/videos/hero-compressed.webm" type="video/webm">
                     </video>
                 </div>
                 
                 <!-- Hero Content -->
-                <div class="hero-content-overlay">
-                    <h1 class="hero-main-title" data-i18n="hero.title">Discover Your Next Adventure</h1>
-                    <p class="hero-main-subtitle" data-i18n="hero.subtitle">Explore breathtaking destinations with expert local guides</p>
+                <div class="hero-content">
+                    <h1 class="hero-title" data-i18n="hero.title">Discover Your Next Adventure</h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">Explore breathtaking destinations with expert local guides</p>
                     <div class="hero-cta">
-                        <a href="/tours" class="btn btn-primary" data-i18n="hero.cta">Explore Tours</a>
-                        <a href="/destinations" class="btn btn-secondary" data-i18n="hero.cta2">View Destinations</a>
+                        <a href="/tours.html" class="btn btn-primary" data-i18n="hero.cta" id="exploreToursBtn">Explore Tours</a>
+                        <a href="#destinations" class="btn btn-secondary" data-i18n="hero.cta2" id="viewDestinationsBtn">View Destinations</a>
                     </div>
                 </div>
                 
-                <!-- Play/Pause button for video -->
-                <button class="video-control" aria-label="Play video">
-                    <svg class="play-icon" viewBox="0 0 24 24">
+                <!-- Video Controls (Working) -->
+                <button class="video-control" id="videoControl" aria-label="Play video">
+                    <svg class="play-icon" viewBox="0 0 24 24" width="24" height="24">
                         <path d="M8 5v14l11-7z" fill="currentColor"/>
                     </svg>
-                    <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;">
+                    <svg class="pause-icon" viewBox="0 0 24 24" width="24" height="24" style="display:none;">
                         <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
                     </svg>
                 </button>
             </div>
         </section>
 
-        <!-- Featured Tours Section -->
-        <section class="featured-tours section-padding">
+        <!-- Featured Tours Section with Working Add to Cart -->
+        <section class="featured-tours section-padding" id="featuredTours">
             <div class="container">
                 <h2 class="section-title" data-i18n="tours.featured">Featured Tours</h2>
                 <p class="section-subtitle" data-i18n="tours.subtitle">Hand-picked experiences for your next journey</p>
                 
-                <div class="tours-grid" id="featured-tours">
-                    <!-- Tours loaded dynamically from JS -->
+                <div class="tours-grid" id="toursGrid">
+                    <!-- Tours will be loaded dynamically by JavaScript -->
                 </div>
                 
                 <div class="text-center">
-                    <a href="/tours" class="btn btn-outline" data-i18n="tours.view_all">View All Tours</a>
+                    <a href="/tours.html" class="btn btn-outline" data-i18n="tours.view_all" id="viewAllToursBtn">View All Tours</a>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us -->
-        <section class="features section-padding bg-light">
+        <!-- Why Choose Us Section -->
+        <section class="features section-padding bg-light" id="features">
             <div class="container">
                 <h2 class="section-title" data-i18n="features.title">Why Choose Us</h2>
                 
@@ -232,14 +198,20 @@
             </div>
         </section>
 
-        <!-- Popular Destinations -->
-        <section class="destinations section-padding">
+        <!-- Popular Destinations with Working Links -->
+        <section class="destinations section-padding" id="destinations">
             <div class="container">
                 <h2 class="section-title" data-i18n="destinations.title">Popular Destinations</h2>
                 
-                <div class="destinations-grid">
-                    <div class="destination-card">
-                        <img src="assets/images/destinations/paris.webp" alt="Paris" loading="lazy" width="400" height="300">
+                <div class="destinations-grid" id="destinationsGrid">
+                    <!-- Destination Card 1 -->
+                    <div class="destination-card" onclick="window.location.href='/tours.html?destination=paris'">
+                        <img src="assets/images/destinations/paris.jpg" 
+                             alt="Paris" 
+                             loading="lazy" 
+                             width="400" 
+                             height="300"
+                             onerror="this.src='assets/images/hero/hero-fallback.jpg'">
                         <div class="destination-info">
                             <h3>Paris</h3>
                             <p data-i18n="destinations.from">from</p>
@@ -247,8 +219,14 @@
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <img src="assets/images/destinations/bali.webp" alt="Bali" loading="lazy" width="400" height="300">
+                    <!-- Destination Card 2 -->
+                    <div class="destination-card" onclick="window.location.href='/tours.html?destination=bali'">
+                        <img src="assets/images/destinations/bali.jpg" 
+                             alt="Bali" 
+                             loading="lazy" 
+                             width="400" 
+                             height="300"
+                             onerror="this.src='assets/images/hero/hero-fallback.jpg'">
                         <div class="destination-info">
                             <h3>Bali</h3>
                             <p data-i18n="destinations.from">from</p>
@@ -256,8 +234,14 @@
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <img src="assets/images/destinations/rome.webp" alt="Rome" loading="lazy" width="400" height="300">
+                    <!-- Destination Card 3 -->
+                    <div class="destination-card" onclick="window.location.href='/tours.html?destination=rome'">
+                        <img src="assets/images/destinations/rome.jpg" 
+                             alt="Rome" 
+                             loading="lazy" 
+                             width="400" 
+                             height="300"
+                             onerror="this.src='assets/images/hero/hero-fallback.jpg'">
                         <div class="destination-info">
                             <h3>Rome</h3>
                             <p data-i18n="destinations.from">from</p>
@@ -265,8 +249,14 @@
                         </div>
                     </div>
                     
-                    <div class="destination-card">
-                        <img src="assets/images/destinations/tokyo.webp" alt="Tokyo" loading="lazy" width="400" height="300">
+                    <!-- Destination Card 4 -->
+                    <div class="destination-card" onclick="window.location.href='/tours.html?destination=tokyo'">
+                        <img src="assets/images/destinations/tokyo.jpg" 
+                             alt="Tokyo" 
+                             loading="lazy" 
+                             width="400" 
+                             height="300"
+                             onerror="this.src='assets/images/hero/hero-fallback.jpg'">
                         <div class="destination-info">
                             <h3>Tokyo</h3>
                             <p data-i18n="destinations.from">from</p>
@@ -277,13 +267,13 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="testimonials section-padding bg-light">
+        <!-- Testimonials Slider (Working) -->
+        <section class="testimonials section-padding bg-light" id="testimonials">
             <div class="container">
                 <h2 class="section-title" data-i18n="testimonials.title">What Our Travelers Say</h2>
                 
-                <div class="testimonials-slider">
-                    <div class="testimonial-card active">
+                <div class="testimonials-slider" id="testimonialsSlider">
+                    <div class="testimonial-card active" data-index="0">
                         <div class="testimonial-content">
                             <p data-i18n="testimonials.1.text">"Amazing experience! The local guide made all the difference. Saw places I never would have found on my own."</p>
                             <div class="testimonial-author">
@@ -293,7 +283,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
+                    <div class="testimonial-card" data-index="1">
                         <div class="testimonial-content">
                             <p data-i18n="testimonials.2.text">"Perfect organization, great value for money. Already planning my next trip with them."</p>
                             <div class="testimonial-author">
@@ -303,7 +293,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
+                    <div class="testimonial-card" data-index="2">
                         <div class="testimonial-content">
                             <p data-i18n="testimonials.3.text">"The attention to detail was incredible. Every aspect of the trip was well thought out."</p>
                             <div class="testimonial-author">
@@ -315,22 +305,26 @@
                 </div>
                 
                 <div class="slider-controls">
-                    <button class="slider-prev" aria-label="Previous">←</button>
-                    <button class="slider-next" aria-label="Next">→</button>
+                    <button class="slider-prev" id="sliderPrev" aria-label="Previous">←</button>
+                    <button class="slider-next" id="sliderNext" aria-label="Next">→</button>
                 </div>
             </div>
         </section>
 
-        <!-- Newsletter Signup -->
-        <section class="newsletter section-padding">
+        <!-- Newsletter Signup (Working Form) -->
+        <section class="newsletter section-padding" id="newsletter">
             <div class="container">
                 <div class="newsletter-content">
                     <h2 data-i18n="newsletter.title">Get Travel Inspiration</h2>
                     <p data-i18n="newsletter.subtitle">Subscribe to receive exclusive offers and travel tips</p>
                     
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Your email address" required aria-label="Email">
-                        <button type="submit" class="btn btn-primary" data-i18n="newsletter.subscribe">Subscribe</button>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" 
+                               placeholder="Your email address" 
+                               required 
+                               aria-label="Email"
+                               id="newsletterEmail">
+                        <button type="submit" class="btn btn-primary" data-i18n="newsletter.subscribe" id="newsletterSubscribe">Subscribe</button>
                     </form>
                     
                     <small data-i18n="newsletter.privacy">We respect your privacy. Unsubscribe anytime.</small>
@@ -340,36 +334,36 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4 data-i18n="footer.company">Company</h4>
                     <ul>
-                        <li><a href="/about" data-i18n="footer.about">About Us</a></li>
-                        <li><a href="/team" data-i18n="footer.team">Our Team</a></li>
-                        <li><a href="/careers" data-i18n="footer.careers">Careers</a></li>
-                        <li><a href="/press" data-i18n="footer.press">Press</a></li>
+                        <li><a href="/about.html" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="/team.html" data-i18n="footer.team">Our Team</a></li>
+                        <li><a href="/careers.html" data-i18n="footer.careers">Careers</a></li>
+                        <li><a href="/press.html" data-i18n="footer.press">Press</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4 data-i18n="footer.support">Support</h4>
                     <ul>
-                        <li><a href="/contact" data-i18n="footer.contact">Contact Us</a></li>
-                        <li><a href="/faq" data-i18n="footer.faq">FAQ</a></li>
-                        <li><a href="/privacy" data-i18n="footer.privacy">Privacy Policy</a></li>
-                        <li><a href="/terms" data-i18n="footer.terms">Terms of Service</a></li>
+                        <li><a href="/contact.html" data-i18n="footer.contact">Contact Us</a></li>
+                        <li><a href="/faq.html" data-i18n="footer.faq">FAQ</a></li>
+                        <li><a href="/privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/terms.html" data-i18n="footer.terms">Terms of Service</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4 data-i18n="footer.connect">Connect With Us</h4>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="#" aria-label="Facebook" onclick="return false">📘</a>
+                        <a href="#" aria-label="Instagram" onclick="return false">📷</a>
+                        <a href="#" aria-label="Twitter" onclick="return false">🐦</a>
+                        <a href="#" aria-label="YouTube" onclick="return false">▶️</a>
                     </div>
                     
                     <div class="payment-methods">
@@ -383,8 +377,8 @@
                 <div class="footer-col">
                     <h4 data-i18n="footer.app">Download Our App</h4>
                     <div class="app-badges">
-                        <a href="#" class="app-badge">App Store</a>
-                        <a href="#" class="app-badge">Google Play</a>
+                        <a href="#" class="app-badge" onclick="return false">App Store</a>
+                        <a href="#" class="app-badge" onclick="return false">Google Play</a>
                     </div>
                 </div>
             </div>
@@ -393,8 +387,7 @@
                 <p>&copy; 2026 Global Travels. <span data-i18n="footer.rights">All rights reserved.</span></p>
                 
                 <div class="footer-lang">
-                    <!-- Language selector for footer -->
-                    <select class="footer-lang-select" aria-label="Select language">
+                    <select class="footer-lang-select" id="footerLangSelect" aria-label="Select language">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="fr">Français</option>
@@ -411,29 +404,20 @@
         </div>
     </footer>
 
-    <!-- Full JavaScript -->
-    <script src="js/main.js" defer></script>
-    <script src="js/multilingual.js" defer></script>
-    <script src="js/cart.js" defer></script>
-    <script src="js/video-header.js" defer></script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/multilingual.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/tours.js"></script>
     
-    <!-- Performance monitoring (optional) -->
+    <!-- Initialize everything -->
     <script>
-    // Core Web Vitals monitoring
-    if ('performance' in window && 'navigation' in performance) {
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const perfData = window.performance.timing;
-                const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-                console.log('Page load time:', pageLoadTime, 'ms');
-                
-                // Report to analytics if needed
-                if (pageLoadTime > 2500) {
-                    console.warn('Page load time exceeds 2.5s');
-                }
-            }, 0);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all components
+            if (window.TravelSite) {
+                window.TravelSite.init();
+            }
         });
-    }
     </script>
 </body>
 </html>
