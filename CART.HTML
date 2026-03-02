@@ -259,4 +259,78 @@
                 // Remove buttons
                 document.querySelectorAll('.cart-remove').forEach(btn => {
                     btn.addEventListener('click', function() {
-                        const id = parseInt(this.dataset.id
+                        const id = parseInt(this.dataset.id);
+                        removeItem(id);
+                    });
+                });
+            }
+            
+            // Remove item
+            function removeItem(id) {
+                cart.items = cart.items.filter(i => i.id !== id);
+                cart.count = cart.items.reduce((sum, i) => sum + i.quantity, 0);
+                saveCart();
+                renderCart();
+                showNotification('Item removed from cart');
+            }
+            
+            // Save cart to localStorage
+            function saveCart() {
+                cart.count = cart.items.reduce((sum, i) => sum + i.quantity, 0);
+                localStorage.setItem('travelCart', JSON.stringify(cart));
+            }
+            
+            // Show notification
+            function showNotification(message) {
+                const notification = document.createElement('div');
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 80px;
+                    right: 20px;
+                    padding: 1rem 2rem;
+                    background: #0066cc;
+                    color: white;
+                    border-radius: 8px;
+                    z-index: 9999;
+                    animation: slideIn 0.3s ease;
+                `;
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+            }
+            
+            // Clear cart
+            function clearCart() {
+                if (confirm('Are you sure you want to clear your cart?')) {
+                    cart = { items: [], total: 0, count: 0 };
+                    localStorage.removeItem('travelCart');
+                    renderCart();
+                    showNotification('Cart cleared');
+                }
+            }
+            
+            // Proceed to checkout
+            function proceedToCheckout() {
+                if (!cart.items || cart.items.length === 0) {
+                    alert('Your cart is empty');
+                    return;
+                }
+                localStorage.setItem('travelCart', JSON.stringify(cart));
+                window.location.href = '/checkout.html';
+            }
+            
+            // Initialize
+            renderCart();
+            
+            // Button event listeners
+            document.getElementById('continueShoppingBtn')?.addEventListener('click', () => {
+                window.location.href = '/tours.html';
+            });
+            
+            document.getElementById('clearCartBtn')?.addEventListener('click', clearCart);
+            
+            document.getElementById('checkoutBtn')?.addEventListener('click', proceedToCheckout);
+        });
+    </script>
+</body>
+</html>
