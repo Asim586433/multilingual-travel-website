@@ -1,24 +1,48 @@
 travel-website/
 ├── index.html
+├── tours.html
+├── tour-detail.html
+├── cart.html
+├── checkout.html
+├── checkout-success.html
+├── admin/
+│   ├── index.html
+│   ├── pages.html
+│   ├── tours-manager.html
+│   └── orders.html
 ├── css/
 │   ├── style.css
-│   ├── critical.css
 │   └── admin.css
 ├── js/
 │   ├── main.js
 │   ├── cart.js
 │   ├── multilingual.js
-│   ├── video-header.js
+│   ├── tours.js
+│   ├── checkout.js
 │   └── admin.js
-├── pages/
-│   ├── tours.html
-│   ├── cart.html
-│   ├── checkout.html
-│   └── admin/
-│       ├── dashboard.html
-│       ├── pages.html
-│       └── tours-manager.html
-└── assets/
-    ├── images/
-    ├── videos/
-    └── icons/
+├── assets/
+│   ├── images/
+│   │   ├── hero/
+│   │   │   ├── hero-poster.webp
+│   │   │   ├── hero-poster.jpg
+│   │   │   └── hero-fallback.jpg
+│   │   ├── tours/
+│   │   │   ├── paris.webp
+│   │   │   ├── bali.webp
+│   │   │   ├── rome.webp
+│   │   │   ├── tokyo.webp
+│   │   │   ├── santorini.webp
+│   │   │   ├── machu-picchu.webp
+│   │   │   └── safari.webp
+│   │   ├── destinations/
+│   │   │   ├── paris.jpg
+│   │   │   ├── bali.jpg
+│   │   │   ├── rome.jpg
+│   │   │   └── tokyo.jpg
+│   │   └── icons/
+│   │       ├── cart.svg
+│   │       ├── menu.svg
+│   │       └── close.svg
+│   └── videos/
+│       ├── hero-compressed.mp4
+│       └── hero-compressed.webm
